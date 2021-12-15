@@ -1,8 +1,63 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
+:root {
+  --primary-green: rgba(47, 182, 90, 255);
+  --primary-text: #555;
 }
 
-a {
-  color: #00B7FF;
+body {
+  padding: 0;
+  margin: 0 auto;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  flex-direction: column;
+  max-width: 1250px;
 }
+/* <NAVBAR>*/
+.navbar {
+  /* border: 1px solid tomato; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1250px;
+  width: 100%;
+}
+.nav-left {
+  display: flex;
+  align-items: center;
+}
+.logo {
+  fill: var(--primary-green);
+}
+.logo-text {
+  font-size: 18px;
+  font-weight: 600;
+  margin-left: 10px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.nav-right {
+  display: flex;
+  align-items: center;
+}
+.nav-links {
+  display: flex;
+  list-style-type: none;
+}
+.nav-links > li {
+  color: #555;
+  padding: 10px 22px;
+  cursor: pointer;
+}
+.nav-links > li > a {
+  text-decoration: none;
+  color: var(--primary-text);
+}
+.nav-links > li > a:active {
+  color: var(--primary-green);
+}
+.nav-links > li > a[tabindex]:focus {
+  color: var(--primary-green);
+  outline: none;
+}
+/* </NAVBAR> */
