@@ -3,7 +3,6 @@ main {
   display: flex;
   margin: 20px 0px 0px 0px;
   background-color: #ffffff;
-
   /* flex-wrap: wrap; */
 }
 .main-left {
