@@ -1,0 +1,28 @@
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 600px;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.form-item {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+}
+.btn {
+  background-color: var(--primary-green);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin: 10px;
+}
