@@ -14,16 +14,24 @@ block content
         .card  
             img(src="/images/plant3.jpeg" alt="plant")
             h3 Flowering plants
+            p This is the cateogry's description.
             a(href="#" class="btn") Add items
         .card  
             img(src="/images/plant2.jpeg" alt="plant")
             h3 Shrubs
+            p This is the cateogry's description.
             a(href="#" class="btn") Add items
         .card  
             img(src="/images/plant6.jpeg" alt="plant")
             h3 Fruit plants 
+            p This is the cateogry's description.
             a(href="#" class="btn") Add items 
         .card  
             img(src="/images/plant4.jpeg" alt="plant")
             h3 plants 
             a(href="#" class="btn") Add items 
+        each item in items 
+            .card 
+                h3 #{item.name}
+                p  #{item.description}
+                a(href="#" class="btn") Add items 
