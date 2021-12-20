@@ -2,17 +2,12 @@ extends layout
 block head 
   link(rel="stylesheet", href="/stylesheets/home.css")
   
-
 block content
   main 
     div.main-left
       h1 One stop 
       h1 Plant store
       p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam ipsa voluptatibus sapiente laborum quas aspernatur.
-      a(class="main-btn" href="#" tabindex="5") See more  
+      a(class="main-btn" href="/categories" tabindex="5") See more  
     div.main-right 
       img( class="main-img" src="/images/mainplant.jpg" alt="plant" )
-  //- each item in items 
-    p= item
-    //- img(src=`data:image/${item.image.contentType};base64,${item.image.data.toString('base64')}`, alt="plant image")
-    //- p `${item.desciption}`

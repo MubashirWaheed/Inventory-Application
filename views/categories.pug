@@ -15,12 +15,17 @@ block content
             img(src="/images/plant3.jpeg" alt="plant")
             h3 Flowering plants
             p This is the cateogry's description.
-            a(href="#" class="btn") Add items
+            div.card-btns
+                a(href="/categoryDetail" class='card-btn detail') Detail
+                //- Here I will have to make it dynamic
+                a(href="/itemCreate" class='card-btn') Add items
         .card  
             img(src="/images/plant2.jpeg" alt="plant")
             h3 Shrubs
             p This is the cateogry's description.
-            a(href="#" class="btn") Add items
+            div.card-btns
+                a(href="/categoryDetail" class='card-btn detail') Detail
+                a(href="#" class='card-btn') Add items
         .card  
             img(src="/images/plant6.jpeg" alt="plant")
             h3 Fruit plants 
@@ -30,8 +35,11 @@ block content
             img(src="/images/plant4.jpeg" alt="plant")
             h3 plants 
             a(href="#" class="btn") Add items 
-        each item in items 
+        each category in categories 
             .card 
-                h3 #{item.name}
-                p  #{item.description}
-                a(href="#" class="btn") Add items 
+                h3 #{category.name}
+                p  #{category.description}
+                .card-btns 
+                    a(href=`/categoryDetail/${category.id}` class='card-btn detail') Detail
+                    //- Here I will have to make it dynamic
+                    a(href=`${category.url}/itemCreate` class='card-btn') Add items

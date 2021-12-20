@@ -1,0 +1,14 @@
+extends layout 
+block head 
+    link(rel="stylesheet", href="/stylesheets/itemform.css" , type='text/css')
+
+block content 
+    div.content
+        p Create items for #{category.name} category
+        form(action="" method="POST")
+            div.form-group
+                label(for="itemName") Item Name
+                input(type="text" name="itemName" value="" required=true) 
+                label(for='price') Item Price
+                input(type="text", name="price" value='' required=true)
+            input(type="submit" class='submit-btn')
