@@ -1,3 +1,36 @@
 h1 {
   color: rebeccapurple;
 }
+table {
+  border-collapse: collapse;
+  min-width: 400px;
+}
+table thead {
+  border-radius: 10px;
+}
+table thead tr {
+  text-align: left;
+  background-color: var(--primary-green);
+  color: white;
+  font-weight: bold;
+  user-select: none;
+}
+tbody tr {
+  border-bottom: 1px solid lightgrey;
+}
+th,
+td {
+  padding: 13px 15px;
+}
+.fas {
+  fill: lightgrey;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+/* Mobile */
+@media screen and (min-width: 400px) {
+  table {
+    margin: 5px 10px;
+  }
+}

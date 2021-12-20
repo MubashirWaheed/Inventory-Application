@@ -1,5 +1,6 @@
 const Categories = require('../models/categories');
 const Items = require('../models/items');
+const async = require('async');
 
 const {body, validationResult } = require('express-validator');
 
@@ -7,6 +8,7 @@ const path = require('path')
 const crypto = require('crypto');
 const multer = require('multer');
 const {GridFsStorage} = require('multer-gridfs-storage');
+const { resourceLimits } = require('worker_threads');
 
 // Multer for storing uploaded files
 const URI = process.env.MONGODB;
@@ -18,11 +20,20 @@ exports.categories = (req, res)=>{
         res.render('categories', {categories: categories});
     })
 }
+
 // Category detail page 
 exports.categories_detail = (req, res)=>{
-    Items.find({'category' : req.params.id}, 'itemName')
-    .exec(function(err,items){
-        res.render('category_detail' , {items: items});
+    async.parallel({
+        items: function(callback){
+            Items.find({'category' : req.params.id}, 'itemName price')
+            .exec(callback)        
+        },
+        category: function(callback){
+            Categories.findById(req.params.id)
+            .exec(callback)
+        }
+    }, function(err, results){
+        res.render('category_detail', {items: results.items, category:results.category})
     })
 
 }

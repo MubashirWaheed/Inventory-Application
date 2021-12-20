@@ -21,6 +21,7 @@ exports.itemCreate_post = [
     })
     item.save(function(err){
         if(err) return next(err)
-        res.redirect('/categories');
+        res.redirect(`/categoryDetail/${req.params.id}`)
+        // res.redirect('/categories');
     })
 }]

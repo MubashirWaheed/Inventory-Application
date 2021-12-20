@@ -1,7 +1,28 @@
 extends layout 
 block head 
-    link(rel="stylesheet", href="stylesheets/category_detail.css")
+    link(rel="stylesheet", href="/stylesheets/category_detail.css")
+    <script src="https://kit.fontawesome.com/abb39a57a2.js" crossorigin="anonymous"></script>
 block content 
-    h1 Category detail page
-    each item in items
-        h6 #{item.itemName}
+    h1 #{category.name} 
+    //- h1 
+    table
+        thead 
+            tr 
+                th Item name 
+                th Price 
+                th Update 
+                th Delete
+        tbody 
+            each item in items
+                tr 
+                    td #{item.itemName}
+                    td #{item.price}
+                    td
+                        //- Update iten details 
+                        a(href="#") 
+                            i(class="fas fa-edit")
+                    td 
+                        //- Delete item 
+                        a(href="#")
+                            i(class="fas fa-trash") 
+            
