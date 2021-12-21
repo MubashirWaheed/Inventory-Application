@@ -25,3 +25,15 @@ exports.itemCreate_post = [
         // res.redirect('/categories');
     })
 }]
+
+
+// Delete item 
+exports.itemDelete_delete = (req, res)=>{
+    Items.findByIdAndDelete(req.body.id)
+    .then(result=>{
+        return res.json({redirect:`/categoryDetail/${req.params.id}`})
+    })
+    .catch(err=>{
+        console.log(err);
+    })
+} 

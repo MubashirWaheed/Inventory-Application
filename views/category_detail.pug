@@ -3,8 +3,7 @@ block head
     link(rel="stylesheet", href="/stylesheets/category_detail.css")
     <script src="https://kit.fontawesome.com/abb39a57a2.js" crossorigin="anonymous"></script>
 block content 
-    h1 #{category.name} 
-    //- h1 
+    h1(class="category" data-catid=`${category._id}`) #{category.name} 
     table
         thead 
             tr 
@@ -21,8 +20,28 @@ block content
                         //- Update iten details 
                         a(href="#") 
                             i(class="fas fa-edit")
-                    td 
-                        //- Delete item 
-                        a(href="#")
+                    td
+                        //- Delete item from database
+                        a(class="trashcan" data-test=`${item._id}`)
                             i(class="fas fa-trash") 
-            
+    script.
+         const category = document.querySelector('.category');
+         const trashcan = document.querySelector('.trashcan');
+
+         if(trashcan != undefined){
+             trashcan.addEventListener("click", (e)=>{
+             const endpoint = `/categoryDetail/${category.dataset.catid}`
+            fetch(endpoint, {
+                method:'DELETE',
+                headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({id:`${trashcan.dataset.test}`})
+            })
+                .then((res)=> res.json())
+                .then((data)=> window.location.href = data.redirect)
+                .catch((err)=> console.log(err));
+            })
+         }
+
+         

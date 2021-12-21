@@ -26,4 +26,7 @@ router.get('/categories/:id/itemCreate', itemsController.itemCreate_get) ;
 // POST route for item form
 router.post('/categories/:id/itemCreate', itemsController.itemCreate_post);
 
+// DELETE route for items
+router.delete('/categoryDetail/:id',itemsController.itemDelete_delete);
+
 module.exports = router;
