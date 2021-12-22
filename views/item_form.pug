@@ -4,11 +4,15 @@ block head
 
 block content 
     div.content
-        p Create items for #{category.name} category
+        if itemData === undefined
+            p Create items for #{category.name} category
+        else 
+            p #{itemData.category.name}
+
         form(action="" method="POST")
             div.form-group
                 label(for="itemName") Item Name
-                input(type="text" name="itemName" value="" required=true) 
+                input(type="text" name="itemName" value=(undefined ===itemData ? "" : itemData.itemName) required=true) 
                 label(for='price') Item Price
-                input(type="text", name="price" value='' required=true)
+                input(type="text", name="price" value=(undefined == itemData ? "": itemData.price ) )  
             input(type="submit" class='submit-btn')

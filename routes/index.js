@@ -29,4 +29,10 @@ router.post('/categories/:id/itemCreate', itemsController.itemCreate_post);
 // DELETE route for items
 router.delete('/categoryDetail/:id',itemsController.itemDelete_delete);
 
+// UPDATE get route 
+router.get('/categories/:cid/update/:id', itemsController.itemUpdate_get);
+
+// UPDATE Post route 
+router.post('/categories/:cid/update/:id', itemsController.itemUpdate_post);
+
 module.exports = router;

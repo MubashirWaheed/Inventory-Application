@@ -22,10 +22,8 @@ exports.itemCreate_post = [
     item.save(function(err){
         if(err) return next(err)
         res.redirect(`/categoryDetail/${req.params.id}`)
-        // res.redirect('/categories');
     })
 }]
-
 
 // Delete item 
 exports.itemDelete_delete = (req, res)=>{
@@ -34,6 +32,42 @@ exports.itemDelete_delete = (req, res)=>{
         return res.json({redirect:`/categoryDetail/${req.params.id}`})
     })
     .catch(err=>{
-        console.log(err);
+        res.send(err);
     })
 } 
+
+// UPDATE GET 
+exports.itemUpdate_get = (req, res)=>{
+    Items.findById(req.params.id)
+    .populate('category')
+    .exec(function(err, data){
+        res.render('item_form', {itemData: data});
+    })
+}
+
+// UPDATE POST 
+exports.itemUpdate_post = [
+    body('itemName', 'Field can not be empty').trim().isLength({min:1}).escape(),
+    body('price','Field can not be empty').trim().isLength({min:1}).escape(),
+
+    (req, res, next)=>{
+        const errors = validationResult(req)
+
+        const item = new Items({
+            itemName : req.body.itemName,
+            price: req.body.price,
+            category: req.params.cid,
+            _id: req.params.id
+        })
+
+        if(!errors.isEmpty()){
+            res.render("item_form", {itemData:item})
+            console.log(errors);
+        }else{
+            Items.findByIdAndUpdate(req.params.id, item, {}, function(err){
+                res.redirect(`/categoryDetail/${req.params.cid}`);
+            })
+        }
+
+    }
+]

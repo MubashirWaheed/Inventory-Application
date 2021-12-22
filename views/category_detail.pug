@@ -18,7 +18,7 @@ block content
                     td #{item.price}
                     td
                         //- Update iten details 
-                        a(href="#") 
+                        a( href=`/categories/${category._id}/update/${item._id}` class="updatebtn" data-updateid=`${item._id}`) 
                             i(class="fas fa-edit")
                     td
                         //- Delete item from database
@@ -27,7 +27,9 @@ block content
     script.
          const category = document.querySelector('.category');
          const trashcan = document.querySelector('.trashcan');
+         const updateBtn = document.querySelector('.updatebtn');
 
+        //-DElETE   
          if(trashcan != undefined){
              trashcan.addEventListener("click", (e)=>{
              const endpoint = `/categoryDetail/${category.dataset.catid}`
@@ -43,5 +45,5 @@ block content
                 .catch((err)=> console.log(err));
             })
          }
-
+         
          
