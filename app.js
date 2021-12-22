@@ -4,6 +4,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const process = require('process');
+const compression = require('compression');
+const helmet = require('helmet');
+
 // ENV
 const dotenv = require('dotenv').config();
 
@@ -12,15 +15,15 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+app.use(helmet({
+  contentSecurityPolicy: false,
+}));
+
 // Setup mongoose connection
 const mongoose = require('mongoose');
 mongoose.connect(process.env.MONGODB,{useNewurlParser:true});
 const db = mongoose.connection;
 db.on('error',console.error.bind(console,'MongoDB connection error'));
-
-// app.use((req, res)=>{
-//   console.log(process.env.MONGODB)
-// })
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -30,6 +33,10 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+// Compress all routes
+app.use(compression());
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
