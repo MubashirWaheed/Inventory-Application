@@ -1,6 +1,6 @@
 ### Inventory project
 
-Created this project to understand how MVC(model, view and controller) apatteren works and deployed it on heroku.
+Created this project to understand how MVC (model, view and controller) patteren works and deployed it on heroku.
 
 #### Technologies used
 
