@@ -4,11 +4,11 @@ Created this project to understand how MVC(model, view and controller) apatteren
 
 #### Technologies used
 
-Javascript
-Mongoose
-MongoDB Atlas
-Pug
-Heroku
+- Javascript
+- Mongoose
+- MongoDB Atlas
+- Pug
+- Heroku
 
 ##### How to use this project?
 
